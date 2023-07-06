@@ -20,11 +20,8 @@ class GroupViewModel extends ChangeNotifier {
         // groups = jsonData;
         print('runtime type${jsonData.runtimeType}');
         groups = jsonData;
+        notifyListeners();
         return jsonData;
-        // jsonData.forEach((group) {
-        //   groups.add(GroupData.fromJson(group));
-        // });
-        // print("groups in viewmodel : $groups");
       } else {
         error = 'Failed to fetch groups';
         return null;
