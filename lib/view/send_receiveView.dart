@@ -19,13 +19,11 @@ class _SendReceivePageState extends State<SendReceivePage> {
 
   void fun1() async {
     var data = await widget.sendreceiveModel.fetchSendReceiveData();
-    print('here : ${data}');
   }
 
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<SendReceiveViewModel>(context);
-    print(viewModel);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +64,7 @@ class _SendReceivePageState extends State<SendReceivePage> {
             final textColor = isReceived ? Colors.black : Colors.white;
             final borderRadius = isReceived
                 ? const BorderRadius.only(
-                    bottomLeft: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0),
                   )
