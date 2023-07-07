@@ -31,16 +31,59 @@ class _SendReceivePageState extends State<SendReceivePage> {
       appBar: AppBar(
         title: Text('Send and Receive Data'),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
+        padding: EdgeInsets.all(16.0),
         itemCount: viewModel.sendReceiveData.length,
+        separatorBuilder: (context, index) => Divider(),
         itemBuilder: (context, index) {
           final data = viewModel.sendReceiveData[index];
-          print('data: $data.data');
+          final isReceived = data.msgType == "RECEIVED";
+          final alignment =
+              isReceived ? MainAxisAlignment.start : MainAxisAlignment.end;
+          final backgroundColor = isReceived ? Colors.white : Colors.blue;
+          final textColor = isReceived ? Colors.black : Colors.white;
+          final borderRadius = isReceived
+              ? BorderRadius.only(
+                  bottomLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
+                )
+              : BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0),
+                );
 
-          return ListTile(
-            title: Text(data.ctrlMsg ?? ''),
-            subtitle:
-                Text('${data.date ?? ''} \t ${data.time.toString() ?? ''}'),
+          return Container(
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: borderRadius,
+              border: Border.all(color: Colors.grey),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: alignment,
+                children: [
+                  Flexible(
+                    child: ListTile(
+                      title: Text(
+                        data.ctrlMsg ?? '',
+                        style: TextStyle(color: textColor),
+                        textAlign: isReceived ? TextAlign.start : TextAlign.end,
+                      ),
+                      subtitle: Text(
+                        '${data.date ?? ''} \t ${data.time.toString() ?? ''}',
+                        style: TextStyle(color: textColor),
+                        textAlign: isReceived ? TextAlign.start : TextAlign.end,
+                      ),
+                      contentPadding: EdgeInsets.zero,
+                      dense: true,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),
