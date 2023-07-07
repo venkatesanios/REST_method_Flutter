@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rest_method_flutter/core/themes.dart';
 
 import '../viewmodel/send_receiveviewmodel.dart';
 
@@ -24,13 +25,16 @@ class _SendReceivePageState extends State<SendReceivePage> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<SendReceiveViewModel>(context);
+    final themeSelection = Provider.of<ThemeSelection>(context, listen: true);
 
     return Scaffold(
+      backgroundColor: themeSelection.selectedTheme.primaryColor,
       appBar: AppBar(
         title: Text('Send and Receive Data'),
       ),
       body: Container(
-        color: Colors.grey[200], // Light gray background color
+        color: themeSelection.selectedTheme
+            .primaryColor, // Colors.grey[200], // Light gray background color
         child: ListView.separated(
           padding: EdgeInsets.all(16.0),
           itemCount: viewModel.sendReceiveData.length,

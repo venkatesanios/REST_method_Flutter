@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rest_method_flutter/core/themes.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
 import 'package:rest_method_flutter/view/send_receiveView.dart';
 import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
@@ -9,8 +10,11 @@ import '../viewmodel/groupviewmodel.dart';
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeSelection = Provider.of<ThemeSelection>(context, listen: true);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: themeSelection.selectedTheme,
       title: 'My App',
       home: HomePage(),
       routes: {
@@ -35,7 +39,7 @@ class HomePage extends StatelessWidget {
       'subtitle':
           'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/report?fromDate=%272023-05-29%27&toDate=%272023-05-29%27&type=sendrevmsg'
     },
-    {'title': 'Item 3', 'subtitle': 'Subtitle 3'},
+    {'title': 'ThemesPage', 'subtitle': 'ThemesPage'},
     {'title': 'Item 4', 'subtitle': 'Subtitle 4'},
     {'title': 'Item 5', 'subtitle': 'Subtitle 5'},
   ];
@@ -70,7 +74,9 @@ class HomePage extends StatelessWidget {
                               sendreceiveModel: viewModelsendreceive,
                             )));
               } else {
-                Navigator.pushNamed(context, '/${item['title']!}');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ThemesPage()));
+                //  Navigator.pushNamed(context, '/${item['title']!}');
               }
             },
             child: ListTile(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rest_method_flutter/core/themes.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
 import 'package:rest_method_flutter/view/homeview.dart';
 import 'package:rest_method_flutter/viewmodel/groupviewmodel.dart';
 import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
-import 'package:sticky_headers/sticky_headers.dart';
 
 void main() {
   runApp(
@@ -16,7 +16,9 @@ void main() {
         ChangeNotifierProvider<SendReceiveViewModel>(
           create: (_) => SendReceiveViewModel(),
         ),
-        // Add more providers here if needed
+        ChangeNotifierProvider<ThemeSelection>(
+          create: (_) => ThemeSelection(),
+        ),
       ],
       child: MyApp(),
     ),
@@ -30,12 +32,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<GroupViewModel>(context, listen: true);
+    final themeSelection = Provider.of<ThemeSelection>(context, listen: true);
     return MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //   useMaterial3: true,
+        // ),
+        theme: themeSelection.selectedTheme,
         debugShowCheckedModeBanner: false,
         home: Homepage());
   }
