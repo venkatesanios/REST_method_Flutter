@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:rest_method_flutter/model/send_receivemodel.dart';
 
 class ApiService {
-  final String baseUrl = 'http://3.1.62.165:8080/api/v1';
+  final String baseUrl = 'http://oroiot.net:8080/api/v1';
 
   Dio _dio = Dio();
 
