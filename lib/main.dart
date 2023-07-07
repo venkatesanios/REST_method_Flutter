@@ -3,11 +3,20 @@ import 'package:provider/provider.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
 import 'package:rest_method_flutter/view/homeview.dart';
 import 'package:rest_method_flutter/viewmodel/groupviewmodel.dart';
+import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => GroupViewModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<GroupViewModel>(
+          create: (_) => GroupViewModel(),
+        ),
+        ChangeNotifierProvider<SendReceiveViewModel>(
+          create: (_) => SendReceiveViewModel(),
+        ),
+        // Add more providers here if needed
+      ],
       child: MyApp(),
     ),
   );

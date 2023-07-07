@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
 import 'package:rest_method_flutter/view/send_receiveView.dart';
+import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
 
 import '../viewmodel/groupviewmodel.dart';
 
@@ -42,6 +43,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<GroupViewModel>(context, listen: true);
+    final viewModelsendreceive =
+        Provider.of<SendReceiveViewModel>(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(
@@ -60,8 +63,12 @@ class HomePage extends StatelessWidget {
                       ),
                     ));
               } else if (item['title'] == 'SendReceivePage') {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SendReceivePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SendReceivePage(
+                              sendreceiveModel: viewModelsendreceive,
+                            )));
               } else {
                 Navigator.pushNamed(context, '/${item['title']!}');
               }

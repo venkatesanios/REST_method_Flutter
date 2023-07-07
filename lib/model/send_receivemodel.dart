@@ -9,18 +9,18 @@ String sendandReceiveDataToJson(SendandReceiveData data) =>
 class SendandReceiveData {
   int? code;
   String? message;
-  List<Datum>? data;
+  List<dynamic> data = [];
 
   SendandReceiveData({
     this.code,
     this.message,
-    this.data,
+    required this.data,
   });
 
-  factory SendandReceiveData.fromJson(Map<String, dynamic> json) =>
-      SendandReceiveData(
+  factory SendandReceiveData.fromJson(dynamic json) => SendandReceiveData(
         code: json["code"],
         message: json["message"],
+        // data: json["data"],
         data: json["data"] == null
             ? []
             : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
