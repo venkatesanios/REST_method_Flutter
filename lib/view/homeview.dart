@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rest_method_flutter/core/themes.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
+import 'package:rest_method_flutter/view/motorview.dart';
 import 'package:rest_method_flutter/view/send_receiveView.dart';
+import 'package:rest_method_flutter/viewmodel/onoffviewmodel.dart';
 import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
 
 import '../viewmodel/groupviewmodel.dart';
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
           'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/report?fromDate=%272023-05-29%27&toDate=%272023-05-29%27&type=sendrevmsg'
     },
     {'title': 'ThemesPage', 'subtitle': 'ThemesPage'},
-    {'title': 'Item 4', 'subtitle': 'Subtitle 4'},
+    {'title': 'Motoronff', 'subtitle': 'Motor Status'},
     {'title': 'Item 5', 'subtitle': 'Subtitle 5'},
   ];
 
@@ -49,6 +51,7 @@ class HomePage extends StatelessWidget {
     final viewModel = Provider.of<GroupViewModel>(context, listen: true);
     final viewModelsendreceive =
         Provider.of<SendReceiveViewModel>(context, listen: true);
+    final viewModelonoff = Provider.of<onoffViewModel>(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(
@@ -72,6 +75,13 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => SendReceivePage(
                               sendreceiveModel: viewModelsendreceive,
+                            )));
+              } else if (item['title'] == 'Motoronff') {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MotorView(
+                              viewModelonff: viewModelonoff,
                             )));
               } else {
                 Navigator.push(context,

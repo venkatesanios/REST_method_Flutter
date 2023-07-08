@@ -4,6 +4,7 @@ import 'package:rest_method_flutter/core/themes.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
 import 'package:rest_method_flutter/view/homeview.dart';
 import 'package:rest_method_flutter/viewmodel/groupviewmodel.dart';
+import 'package:rest_method_flutter/viewmodel/onoffviewmodel.dart';
 import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
 
 void main() {
@@ -19,6 +20,7 @@ void main() {
         ChangeNotifierProvider<ThemeSelection>(
           create: (_) => ThemeSelection(),
         ),
+        ChangeNotifierProvider<onoffViewModel>(create: (_) => onoffViewModel()),
       ],
       child: MyApp(),
     ),
