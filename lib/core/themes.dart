@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:ui';
+import 'package:flutter/material.dart';
 
 final lightTheme = ThemeData(
   brightness: Brightness.light,
-  primaryColor: Colors.blue,
+  primaryColor: Colors.white,
   // Define other theme properties as per your requirement
 );
 
@@ -19,33 +20,37 @@ final customTheme = ThemeData(
   // Define other theme properties as per your requirement
 );
 
-class ThemeSelection extends ChangeNotifier {
+class ThemeSelection with ChangeNotifier {
   ThemeData _selectedTheme = lightTheme;
 
-  ThemeData get selectedTheme => _selectedTheme;
+  ThemeSelection() {
+    // Listen to changes in system brightness
+    window.onPlatformBrightnessChanged = () {
+      final Brightness brightness = window.platformBrightness;
+      // Update the selected theme based on system brightness
+      if (brightness == Brightness.dark) {
+        _selectedTheme = darkTheme;
+      } else {
+        _selectedTheme = lightTheme;
+      }
+      notifyListeners();
+    };
+  }
 
+  ThemeData get selectedTheme => _selectedTheme;
   void setTheme(ThemeData themeData) {
     _selectedTheme = themeData;
     notifyListeners();
   }
 }
 
-class ThemesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<ThemeSelection>(
-      builder: (context, themeSelection, child) {
-        return MaterialApp(
-          title: 'Theme Selection Demo',
-          theme: themeSelection.selectedTheme,
-          home: SettingsScreen(),
-        );
-      },
-    );
-  }
+class ThemeSelection1 extends ChangeNotifier {
+  ThemeData _selectedTheme = lightTheme;
+
+  ThemeData get selectedTheme => _selectedTheme;
 }
 
-class SettingsScreen extends StatelessWidget {
+class ThemesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeSelection = Provider.of<ThemeSelection>(context, listen: false);

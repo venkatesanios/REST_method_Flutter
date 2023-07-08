@@ -45,8 +45,16 @@ class HomePage extends StatelessWidget {
           'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/report?fromDate=%272023-05-29%27&toDate=%272023-05-29%27&type=sendrevmsg'
     },
     {'title': 'ThemesPage', 'subtitle': 'ThemesPage'},
-    {'title': 'Motoronff', 'subtitle': 'Motor Status'},
-    {'title': 'Faultmsg', 'subtitle': 'Faultmsg'},
+    {
+      'title': 'Motoronff',
+      'subtitle':
+          'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/manualstatus'
+    },
+    {
+      'title': 'Faultmsg',
+      'subtitle':
+          'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/messages/'
+    },
   ];
 
   @override
