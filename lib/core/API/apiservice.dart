@@ -15,7 +15,6 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final jsonData = response.data;
-        // print('jsonData:$jsonData');
         return jsonData;
       } else {
         throw Exception('Failed to fetch send and receive data');
@@ -25,5 +24,20 @@ class ApiService {
     }
   }
 
-  // static fetchSendReceiveData() {}
+  Future<dynamic> fetchMessagesData() async {
+    final url = '$baseUrl/user/153/subuser/0/controller/1305/messages';
+
+    try {
+      final response = await _dio.get(url);
+
+      if (response.statusCode == 200) {
+        final jsonData = response.data;
+        return jsonData;
+      } else {
+        throw Exception('Failed to fetch messages data');
+      }
+    } catch (e) {
+      throw Exception('Error occurred: $e');
+    }
+  }
 }
