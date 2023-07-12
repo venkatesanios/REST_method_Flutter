@@ -4,6 +4,7 @@ import 'package:rest_method_flutter/core/themes.dart';
 import 'package:rest_method_flutter/model/faultmsg_Model.dart';
 import 'package:rest_method_flutter/view/faultmsgView.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
+import 'package:rest_method_flutter/view/listsortfilterview.dart';
 import 'package:rest_method_flutter/view/motorview.dart';
 import 'package:rest_method_flutter/view/send_receiveView.dart';
 import 'package:rest_method_flutter/viewmodel/faultmessageViewModel.dart';
@@ -55,6 +56,7 @@ class HomePage extends StatelessWidget {
       'subtitle':
           'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/messages/'
     },
+    {'title': 'listsort', 'subtitle': 'Add heart in and filter of list'},
   ];
 
   @override
@@ -102,6 +104,9 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => FaultmessageView(
                             faultViewModel: viewModelfaultmsg)));
+              } else if (item['title'] == 'listsort') {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ItemListPage()));
               } else {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ThemesPage()));
