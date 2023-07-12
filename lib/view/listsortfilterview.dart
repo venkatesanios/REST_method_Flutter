@@ -20,10 +20,28 @@ class ItemListPage extends StatefulWidget {
 
 class _ItemListPageState extends State<ItemListPage> {
   List<Item> itemList = [
-    Item(name: "Item 1", model: "Model X", status: "Active", isFavorite: false),
+    Item(name: "kumar", model: "Model X", status: "Active", isFavorite: false),
+    Item(name: "kavi", model: "Model Y", status: "Inactive", isFavorite: true),
+    Item(name: "arun", model: "Model Z", status: "Active", isFavorite: false),
+    Item(name: "Akil", model: "Model X", status: "Active", isFavorite: false),
+    Item(name: "bala", model: "Model Y", status: "Inactive", isFavorite: true),
     Item(
-        name: "Item 2", model: "Model Y", status: "Inactive", isFavorite: true),
-    Item(name: "Item 3", model: "Model Z", status: "Active", isFavorite: false),
+        name: "saravana", model: "Model Z", status: "Active", isFavorite: true),
+    Item(
+        name: "prasanth",
+        model: "Model X",
+        status: "Active",
+        isFavorite: false),
+    Item(name: "Amar", model: "Model Y", status: "Inactive", isFavorite: true),
+    Item(
+        name: "zaganlhi",
+        model: "Model Z",
+        status: "Active",
+        isFavorite: false),
+    Item(name: "gows", model: "Model X", status: "Active", isFavorite: true),
+    Item(name: "guna", model: "Model Y", status: "Inactive", isFavorite: true),
+    Item(
+        name: "ironman", model: "Model Z", status: "Active", isFavorite: false),
   ];
   List<Item> filteredList = [];
   bool isAscending = true;
