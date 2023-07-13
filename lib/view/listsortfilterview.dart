@@ -20,28 +20,18 @@ class ItemListPage extends StatefulWidget {
 
 class _ItemListPageState extends State<ItemListPage> {
   List<Item> itemList = [
-    Item(name: "kumar", model: "Model X", status: "Active", isFavorite: false),
-    Item(name: "kavi", model: "Model Y", status: "Inactive", isFavorite: true),
-    Item(name: "arun", model: "Model Z", status: "Active", isFavorite: false),
-    Item(name: "Akil", model: "Model X", status: "Active", isFavorite: false),
-    Item(name: "bala", model: "Model Y", status: "Inactive", isFavorite: true),
-    Item(
-        name: "saravana", model: "Model Z", status: "Active", isFavorite: true),
-    Item(
-        name: "prasanth",
-        model: "Model X",
-        status: "Active",
-        isFavorite: false),
-    Item(name: "Amar", model: "Model Y", status: "Inactive", isFavorite: true),
-    Item(
-        name: "zaganlhi",
-        model: "Model Z",
-        status: "Active",
-        isFavorite: false),
-    Item(name: "gows", model: "Model X", status: "Active", isFavorite: true),
-    Item(name: "guna", model: "Model Y", status: "Inactive", isFavorite: true),
-    Item(
-        name: "ironman", model: "Model Z", status: "Active", isFavorite: false),
+    Item(name: "kumar", model: "Pump", status: "ON", isFavorite: false),
+    Item(name: "kavi", model: "Drip", status: "OFF", isFavorite: true),
+    Item(name: "vijay", model: "Smart", status: "ON", isFavorite: false),
+    Item(name: "Ashok", model: "Pump", status: "ON", isFavorite: false),
+    Item(name: "bala", model: "Drip", status: "OFF", isFavorite: true),
+    Item(name: "saravana", model: "Smart", status: "ON", isFavorite: true),
+    Item(name: "prasanth", model: "Pump", status: "ON", isFavorite: false),
+    Item(name: "Amar", model: "Drip", status: "OFF", isFavorite: true),
+    Item(name: "zaganlhi", model: "Smart", status: "ON", isFavorite: false),
+    Item(name: "gows", model: "Pump", status: "ON", isFavorite: true),
+    Item(name: "guna", model: "Drip", status: "OFF", isFavorite: true),
+    Item(name: "ironman", model: "Smart", status: "ON", isFavorite: false),
   ];
   List<Item> filteredList = [];
   bool isAscending = true;
@@ -250,7 +240,7 @@ class _ItemListPageState extends State<ItemListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Item List'),
+        title: Text('Customer List'),
         actions: [
           IconButton(
             icon: Icon(
