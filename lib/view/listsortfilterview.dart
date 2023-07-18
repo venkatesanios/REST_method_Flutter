@@ -261,7 +261,7 @@ class _ItemListPageState extends State<ItemListPage> {
           ),
           IconButton(
             icon: Icon(
-              isAscending ? Icons.arrow_upward : Icons.arrow_downward,
+              isAscending ? Icons.arrow_upward : Icons.star_border,
             ),
             onPressed: () {
               setState(() {

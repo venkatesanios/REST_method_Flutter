@@ -6,6 +6,7 @@ import 'package:rest_method_flutter/view/faultmsgView.dart';
 import 'package:rest_method_flutter/view/groupview.dart';
 import 'package:rest_method_flutter/view/listsortfilterview.dart';
 import 'package:rest_method_flutter/view/motorview.dart';
+import 'package:rest_method_flutter/view/sellingdeviceview.dart';
 import 'package:rest_method_flutter/view/send_receiveView.dart';
 import 'package:rest_method_flutter/viewmodel/faultmessageViewModel.dart';
 import 'package:rest_method_flutter/viewmodel/onoffviewmodel.dart';
@@ -57,6 +58,7 @@ class HomePage extends StatelessWidget {
           'http://3.1.62.165:8080/api/v1/user/153/subuser/0/controller/1305/messages/'
     },
     {'title': 'listsort', 'subtitle': 'Add heart in and filter of list'},
+    {'title': 'selldevice', 'subtitle': 'dealer sell device of list'},
   ];
 
   @override
@@ -107,10 +109,15 @@ class HomePage extends StatelessWidget {
               } else if (item['title'] == 'listsort') {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ItemListPage()));
+              } else if (item['title'] == 'selldevice') {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SellingDevicePage()));
               } else {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ThemesPage()));
-                //  Navigator.pushNamed(context, '/${item['title']!}');
+                //  Navigator.pushNamed(context, '/${item['title']!}');selldevice
               }
             },
             child: ListTile(

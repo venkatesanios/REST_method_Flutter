@@ -6,6 +6,7 @@ import 'package:rest_method_flutter/view/homeview.dart';
 import 'package:rest_method_flutter/viewmodel/faultmessageViewModel.dart';
 import 'package:rest_method_flutter/viewmodel/groupviewmodel.dart';
 import 'package:rest_method_flutter/viewmodel/onoffviewmodel.dart';
+import 'package:rest_method_flutter/viewmodel/sellingdeviceviewmodel.dart';
 import 'package:rest_method_flutter/viewmodel/send_receiveviewmodel.dart';
 
 void main() {
@@ -24,7 +25,10 @@ void main() {
         ChangeNotifierProvider<onoffViewModel>(create: (_) => onoffViewModel()),
         ChangeNotifierProvider<FaultmessageViewModel>(
           create: (context) => FaultmessageViewModel(),
-        )
+        ),
+        ChangeNotifierProvider<DeviceViewModel>(
+          create: (_) => DeviceViewModel(),
+        ),
       ],
       child: MyApp(),
     ),
